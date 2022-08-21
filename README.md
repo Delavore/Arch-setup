@@ -1,2 +1,2 @@
 # Arch-setup
-My configs from arch
+My configs for arch
