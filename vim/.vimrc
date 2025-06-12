@@ -27,8 +27,28 @@ call plug#end()
 
 " Automatic command for updating ctags 
 " au BufWritePost *.c,*.cpp,*.h silent! !ctags -R &
-autocmd BufWritePost *.c,*.cpp,*.h,*.hpp,*.py,*.s,*.S,*.asm silent! !ctags -R --c-kinds=+p --fields=+n --exclude=build .
+"autocmd BufWritePost *.c,*.cpp,*.h,*.hpp,*.py,*.s,*.S,*.asm silent! !ctags -R --c-kinds=+p --fields=+n --exclude=build .
+" --------------------
+set tags=./tags;$HOME
 
+let tagsFile=findfile("tags", ".;" . $HOME)
+
+"autocmd BufWrite * :echom "write buffer"
+
+if !empty(tagsFile)
+	let dir = fnamemodify(tagsFile, ':h')
+
+	augroup ctags_group
+    autocmd!
+    	autocmd BufWritePost * silent! 
+			\ execute "!ctags -R --c-kinds=+p --fields=+n --exclude=build -f " . shellescape(tagsFile) . " " . shellescape(dir)
+	augroup END
+else
+	echo "not find"
+endif
+
+
+" ---------------
 
 set background=dark
 let g:gruvbox_contrast_dark = 'dark'
