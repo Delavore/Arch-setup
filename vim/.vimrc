@@ -24,29 +24,27 @@ call plug#end()
 
 "set tags=./tags,tags;/
 
-
+"autocmd BufWrite * :echom "write buffer"
 " Automatic command for updating ctags 
 " au BufWritePost *.c,*.cpp,*.h silent! !ctags -R &
 "autocmd BufWritePost *.c,*.cpp,*.h,*.hpp,*.py,*.s,*.S,*.asm silent! !ctags -R --c-kinds=+p --fields=+n --exclude=build .
 " --------------------
-set tags=./tags;$HOME
+" Ctags search
+" Search tags from current dir to HOME dir
+set tags=./tags;$HOME 
 
 let tagsFile=findfile("tags", ".;" . $HOME)
 
-"autocmd BufWrite * :echom "write buffer"
-
 if !empty(tagsFile)
-	let dir = fnamemodify(tagsFile, ':h')
+	let dir = fnamemodify(tagsFile, ':h') " get only dir without name
 
 	augroup ctags_group
-    autocmd!
+    	autocmd!
     	autocmd BufWritePost * silent! 
 			\ execute "!ctags -R --c-kinds=+p --fields=+n --exclude=build -f " . shellescape(tagsFile) . " " . shellescape(dir)
+	" *.c,*.cpp,*.h,*.hpp,*.py,*.s,*.S,*.asm silent! 
 	augroup END
-else
-	echo "not find"
 endif
-
 
 " ---------------
 
