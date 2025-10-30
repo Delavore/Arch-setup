@@ -92,3 +92,7 @@ nmap ф a
 nmap щ o
 nmap г u
 nmap З P
+
+nnoremap zy "zyiw
+nnoremap zd "zdiw
+nnoremap zp "zp
