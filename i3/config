@@ -1,0 +1,2 @@
+bindsym $mod+Shift+w exec i3-input -F "exec xdotool getactivewindow set_window --name '%s'"
+# bindsym $mod+Shift+w exec bash -c 'xdotool getactivewindow set_window --name "$(echo "" | dmenu)"'
