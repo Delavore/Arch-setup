@@ -85,7 +85,6 @@ inoremap jj <ESC>
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 
 nmap Ж :
-" yank
 nmap Н Y
 nmap з p
 nmap ф a
@@ -94,5 +93,6 @@ nmap г u
 nmap З P
 
 nnoremap zy "zyiw
+nnoramap zY "zY
 nnoremap zd "zdiw
 nnoremap zp "zp
